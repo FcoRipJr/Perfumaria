@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOVO PERFUME</title>
+    <title>FRAGRANCIAS</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work+Sans">
@@ -45,56 +45,46 @@
                 {{ session()->get('mensagem') }}
             </div>
         @endif
-        </br></br><h1>Novo Perfume</h1>
 
-         <form action="{{ route('salvarPerfume') }}" method="post" >
-           @csrf
+        <a href="{{ route('novaFragrancia') }}" class="btn btn-info">Nova Fragrancia</a>
 
-            <div class="row">
-              <div class="col">
-                <label for="nome">Nome:</label>
-                <input type="text" name="nome" id="nome" class="form-control formPlaceholder" placeholder="Digite o Nome do Perfume">
-              </div>
-              
-            </div>
-            
-            
-            <div class="row">
-                <div class="col">
-                    <label for="percentAgua">Percentual de Água:</label>
-                    <input type="text" name="percentAgua" id ="percentAgua" class = "form-control formPlaceholder" placeholder="0"> <div class="col">ml</div> 
-                </div>
-                <div class="col">
-                    <label for="percentAlcool">Percentual de Alcool:</label>
-                    <input type="text" name="percentAlcool" id="percentAlcool" class="form-control formPlaceholder" placeholder="0"> <div class="col">ml</div> 
-                </div>
-                <div class="col">
-                    <label for="inputFragrancia">Fragrancia:</label>
-                    <select id="inputFragrancia" class="form-control">
-                      <option selected>Escolha...</option>
-                      <option>...</option>
-    
-                    </select>
-                  </div>
-                    <input type="text" name="percentFragrancia" id="percentFragrancia" class="form-control formPlaceholder" placeholder="0"> <div class="col">ml</div> 
-                  
-            </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Ações</th>
+                    <th>id</th>
+                    <th>Nome</th>
+                    <th>Estoque</th>
+                    <th>Total Utilizado</th>
+                </tr>
+            </thead>
 
-            <div class="row">
-                <div class="col">
-                     <button  type="submit" class="btn btn-info">Salvar </button> 
-                 </div>
-             </div>  
-  
-        </form>
-    </br></br>
+            <tbody>
+                @foreach ($fragrancias as $fragrancia)
+                    <tr>
+                        <td>
+                            <a href="/fragrancias/edit/{{ $fragrancia->id }}" class="btn btn-primary btn-sm">Editar</a>
+                            <form action="/fragrancias/{{ $fragrancia->id }}" class="d-inline-block" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-sm btn-danger">Excluir</button>
+                            </form>
+                        </td>
+                        <td>{{ $fragrancia->id }}</td>
+                        <td>{{ $fragrancia->nome }}</td>
+                        <td>{{ $fragrancia->estoque }}</td>
+                        <td>{{ $fragrancia->totalUtilizado }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     
     </div>
     </div>
       
 
 
-    <footer id="footer">
+ <footer id="footer">
     <h4 >Perfumaria</h4>
     <h3 class="text-blue ">SINTA A FRAGRANCIA</h1>
     <nav class="navbar navbar-expand-md navbar-light py-2 px-2">

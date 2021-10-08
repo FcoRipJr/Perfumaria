@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Perfume;
-use App\Http\Requests\PerfumeRequest;
+use App\Http\Requests;
 
 
 
@@ -32,9 +32,15 @@ class PerfumeController extends Controller
        return view('createPerfume'); 
     }
     
-    public function store(PerfumeRequest $request)
+    public function store(Request $request)
     {
-        
+        Perfume::create([
+            'nome' => $request->nome,
+            'percentAgua' => $request->percentAgua,
+            'percentAlcool' => $request->percentAlcool,
+            'percentFragrancia' => $request->percentFragancia
+        ]);
+        return view('perfumes');
     }
     
     public function edit($perfume)
@@ -46,7 +52,7 @@ class PerfumeController extends Controller
         ]);
     }
     
-    public function update($perfume, PerfumeRequest $request)
+    public function update($perfume, Request $request)
     {
   /*      $perfume = Perfume::findOrFail($perfume);
         $dados['nome']

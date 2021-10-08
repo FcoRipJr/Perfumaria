@@ -15,35 +15,35 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
-Route::get('perfumes',[App\Http\Controllers\PerfumeController::class, 'index']);
-Route::get('perfumes/novo',[App\Http\Controllers\PerfumeController::class, 'create']);
-Route::post('perfumes',[App\Http\Controllers\PerfumeController::class, 'store']);
-Route::get('perfumes/{perfume}/editar',[App\Http\Controllers\PerfumeController::class, 'edit']);
-Route::put('perfumes/{perfume}',[App\Http\Controllers\PerfumeController::class, 'update']);
-Route::delete('perfumes/{perfume}',[App\Http\Controllers\PerfumeController::class, 'destroy']);
-Route::get('perfumes/{perfume}/mais-produzida',[App\Http\Controllers\PerfumeController::class, 'show']);
+Route::get('perfumes',[App\Http\Controllers\PerfumeController::class, 'index'])->name('listarPerfume');
+Route::get('perfumes/novo',[App\Http\Controllers\PerfumeController::class, 'create'])->name('novoPerfume');
+Route::post('perfumes',[App\Http\Controllers\PerfumeController::class, 'store'])->name('salvarPerfume');
+Route::get('perfumes/{perfume}/editar',[App\Http\Controllers\PerfumeController::class, 'edit'])->name('editarPerfume');
+Route::put('perfumes/{perfume}',[App\Http\Controllers\PerfumeController::class, 'update'])->name('atualizarPerfume');
+Route::delete('perfumes/{perfume}',[App\Http\Controllers\PerfumeController::class, 'destroy'])->name('excluirPerfume');
+Route::get('perfumes/{perfume}/mais-produzida',[App\Http\Controllers\PerfumeController::class, 'show'])->name('maisProduzido');
 
-Route::get('fragrancias',[App\Http\Controllers\FraganciaController::class, 'index']);
-Route::get('fragrancias/novo',[App\Http\Controllers\FraganciaController::class, 'create']);
-Route::post('fragrancias',[App\Http\Controllers\FraganciaController::class, 'store']);
-Route::get('fragrancias/{francia}/editar',[App\Http\Controllers\FranciaController::class, 'edit']);
-Route::put('fragrancias/{francia}',[App\Http\Controllers\FranciaController::class, 'update']);
-Route::delete('fragrancias/{francia}',[App\Http\Controllers\FranciaController::class, 'destroy']);
-Route::get('fragrancias/{francia}/mais-utilizada',[App\Http\Controllers\FraganciaController::class, 'show']);
+Route::get('fragrancias',[App\Http\Controllers\FragranciaController::class, 'index'])->name('listarFragrancia');
+Route::get('fragrancias/nova',[App\Http\Controllers\FragranciaController::class, 'create'])->name('novaFragrancia');
+Route::post('fragrancias',[App\Http\Controllers\FragranciaController::class, 'store'])->name('salvarFragrancia');
+Route::get('fragrancias/{fragrancia}/editar',[App\Http\Controllers\FragranciaController::class, 'edit'])->name('editarFragrancia');
+Route::put('fragrancias/{fragrancia}',[App\Http\Controllers\FragranciaController::class, 'update'])->name('atualizarFragrancia');
+Route::delete('fragrancias/{fragrancia}',[App\Http\Controllers\FragranciaController::class, 'destroy'])->name('excluirFragrancia');
+Route::get('fragrancias/{fragrancia}/mais-utilizada',[App\Http\Controllers\FragranciaController::class, 'show'])->name('maisUtilizada');
 
-Route::get('materias-primas',[App\Http\Controllers\MateriaPrimaController::class, 'index']);
-Route::get('materias-primas/novo',[App\Http\Controllers\MateriaPrimaController::class, 'create']);
-Route::post('materias-primas',[App\Http\Controllers\MateriaPrimaController::class, 'store']);
-Route::get('materias-primas/{materiaprima}/editar',[App\Http\Controllers\MateriaPrimaController::class, 'edit']);
-Route::put('materias-primas/{materiaprima}',[App\Http\Controllers\MateriaPrimaController::class, 'update']);
-Route::delete('materias-primas/{materiaprima}',[App\Http\Controllers\MateriaPrimaController::class, 'destroy']);
+Route::get('materias_primas',[App\Http\Controllers\MateriaPrimaController::class, 'index'])->name('listarMateriaPrima');
+Route::get('materias_primas/nova',[App\Http\Controllers\MateriaPrimaController::class, 'create']);
+Route::post('materias_primas',[App\Http\Controllers\MateriaPrimaController::class, 'store'])->name('salvarMateriaPrima');
+Route::get('materias_primas/{materiaprima}/editar',[App\Http\Controllers\MateriaPrimaController::class, 'edit'])->name('editarMateriaPrima');
+Route::put('materias_primas/{materiaprima}',[App\Http\Controllers\MateriaPrimaController::class, 'update'])->name('atualizarMateriaPrima');
+Route::delete('materias_primas/{materiaprima}',[App\Http\Controllers\MateriaPrimaController::class, 'destroy'])->name('excluirMateriaPrima');
 
-Route::get('producoes',[App\Http\Controllers\ProducaoController::class, 'index']);
-Route::get('producoes/novo',[App\Http\Controllers\ProducaoController::class, 'create']);
-Route::post('producoes',[App\Http\Controllers\ProducaoController::class, 'store']);
+Route::get('producoes',[App\Http\Controllers\ProducaoController::class, 'index'])->name('listarProducao');
+Route::get('producoes/nova',[App\Http\Controllers\ProducaoController::class, 'create'])->name('novoProducao');
+Route::post('producoes',[App\Http\Controllers\ProducaoController::class, 'store'])->name('salvarProducao');
 Route::get('producoes/{producao}/editar',[App\Http\Controllers\ProducaoController::class, 'edit']);
 Route::put('producoes/{producao}',[App\Http\Controllers\ProducaoController::class, 'update']);
-Route::delete('producoes/{producao}',[App\Http\Controllers\ProducaoController::class, 'destroy']);
+Route::delete('producoes/{producao}',[App\Http\Controllers\ProducaoController::class, 'destroy'])->name('excluirProducao');
 

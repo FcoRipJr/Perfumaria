@@ -9,6 +9,7 @@ class Perfume extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id', 'created_at', 'updated_at'];
-    protected $table = 'perfumes'; 
+    protected $guarded = ['id', 'created_at', 'updated_at', ];
+    protected $fillable = ['nome', 'percentAgua','percentAlcool', 'percentFragrancia','totalProduzido'];
+   // protected $table = 'perfumes'; 
 }

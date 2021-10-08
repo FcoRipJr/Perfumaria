@@ -14,9 +14,9 @@
 </head>
 
 <body>
-    <header>
+<header>
         <nav class="navbar navbar-expand-md navbar-light navbar-color py-2 px-2">
-            <a class="navbar-brand" href="#"><img class="logo" src="Logo.png" alt=""></a>
+            <a class="navbar-brand" href="{{route('home')}}"><img class="logo" src="Logo.png" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -24,13 +24,13 @@
                 <div class="collapse navbar-collapse text-blue" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                    <a class="nav-link text-blue" href="#">PERFUMES </a>
+                    <a class="nav-link text-blue" href="{{route('listarPerfume')}}">PERFUMES </a>
                     </li>
                     <li class="nav-item active">
-                    <a class="nav-link text-blue" href="#">FRAGRANCIAS </a>
+                    <a class="nav-link text-blue" href="{{route('listarFragrancia')}}">FRAGRANCIAS </a>
                     </li>
                     <li class="nav-item active">
-                    <a class="nav-link text-blue" href="#">MATERIAS PRIMAS </a>
+                    <a class="nav-link text-blue" href="{{route('listarMateriaPrima')}}">MATERIAS PRIMAS </a>
                     </li> 
                 </ul>
                 </div>
@@ -88,7 +88,7 @@
       
 
 
-  <footer id="footer">
+    <footer id="footer">
     <h4 >Perfumaria</h4>
     <h3 class="text-blue ">SINTA A FRAGRANCIA</h1>
     <nav class="navbar navbar-expand-md navbar-light py-2 px-2">
@@ -97,13 +97,13 @@
       <div class=" navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto ">
             <li class="nav-item active">
-                <a class="nav-link text-blue" href="#">PERFUMES </a>
+                <a class="nav-link text-blue"  href="{{route('listarPerfume')}}">PERFUMES </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link text-blue" href="#">FRAGRANCIAS </a>
+                <a class="nav-link text-blue" href="{{route('listarFragrancia')}}">FRAGRANCIAS </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link text-blue" href="#">MATERIAS PRIMAS </a>
+                <a class="nav-link text-blue" href="{{route('listarMateriaPrima')}}">MATERIAS PRIMAS </a>
             </li>
           </ul>
         </div>

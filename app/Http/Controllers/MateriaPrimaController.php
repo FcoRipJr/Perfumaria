@@ -15,7 +15,7 @@ class MateriaPrimaController extends Controller
     {
         $materiasprimas = MateriaPrima::all();
 
-        return view('materiasprimas.index', [
+        return view('materiasprimasIndex', [
             'materiasprimas' => $materiasprimas
         ]);
     }
@@ -32,7 +32,11 @@ class MateriaPrimaController extends Controller
 
     public function edit()
     {
+        $materiaprima = MateriaPrima::findOrFail($materiaprima);
 
+        return view('materiasprimasEdit',[
+            'materiasprimas'=>$materiaprima
+        ]);
     }
 
     public function update($materiaprima, MateriaPrimaRequest $request)

@@ -10,5 +10,6 @@ class Producao extends Model
     use HasFactory;
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
-    protected $table = 'producoes'; 
+    protected $fillable = ['quantPerfume', 'quantAgua', 'quantAlcool', 'quantFragrancia'];
+    //protected $table = 'producoes'; 
 }

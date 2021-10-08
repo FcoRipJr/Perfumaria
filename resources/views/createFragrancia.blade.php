@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FRAGANCIAS</title>
+    <title>NOVA FRAGRANCIA</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work+Sans">
@@ -14,9 +14,9 @@
 </head>
 
 <body>
-    <header>
+<header>
         <nav class="navbar navbar-expand-md navbar-light navbar-color py-2 px-2">
-            <a class="navbar-brand" href="#"><img class="logo" src="Logo.png" alt=""></a>
+            <a class="navbar-brand" href="{{route('home')}}"><img class="logo" src="Logo.png" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -24,67 +24,59 @@
                 <div class="collapse navbar-collapse text-blue" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                    <a class="nav-link text-blue" href="#">PERFUMES </a>
+                    <a class="nav-link text-blue" href="{{route('listarPerfume')}}">PERFUMES </a>
                     </li>
                     <li class="nav-item active">
-                    <a class="nav-link text-blue" href="#">FRAGRANCIAS </a>
+                    <a class="nav-link text-blue" href="{{route('listarFragrancia')}}">FRAGRANCIAS </a>
                     </li>
                     <li class="nav-item active">
-                    <a class="nav-link text-blue" href="#">MATERIAS PRIMAS </a>
+                    <a class="nav-link text-blue" href="{{route('listarMateriaPrima')}}">MATERIAS PRIMAS </a>
                     </li> 
                 </ul>
                 </div>
             </div>
         </nav>
     </header>
+
   
   <div id="principal">   
     <div class="container text-red">
+
         @if(session()->has('mensagem'))
             <div class="alert alert-success">
                 {{ session()->get('mensagem') }}
             </div>
         @endif
 
-        <a href="/fragancias/createFragancia" class="btn btn-info">Nova Fragancia</a>
+        </br></br> <h1>Nova Fragrancia</h1>
+          <form action="{{ route('salvarFragrancia') }}" method="post">
+           @csrf
+            <div class="row">
+              <div class="col">
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" id="nome" class="form-control formPlaceholder" placeholder="Digite o nome da Fragrancia">
+              </div>
+              <div class="col">
+                <label for="estoque">Estoque:</label>
+                <input type="text" name="estoque" id ="estoque" class = "form-control formPlaceholder" placeholder="0"> <div class="col">ml</div> 
+                </div>
 
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Ações</th>
-                    <th>id</th>
-                    <th>Nome</th>
-                    <th>Estoque</th>
-                    <th>Total Utilizado</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                @foreach ($fragancias as $fragancia)
-                    <tr>
-                        <td>
-                            <a href="/fragancias/edit/{{ $fragancia->id }}" class="btn btn-primary btn-sm">Editar</a>
-                            <form action="/fragancias/{{ $fragancia->id }}" class="d-inline-block" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-sm btn-danger">Excluir</button>
-                            </form>
-                        </td>
-                        <td>{{ $fragancia->id }}</td>
-                        <td>{{ $fragancia->nome }}</td>
-                        <td>{{ $fragancia->estoque }}</td>
-                        <td>{{ $fragancia->totalUtilizado }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    
-    </div>
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                <button  type="submit" class="btn btn-info">Salvar </button> 
+                 </div>
+             </div>  
+            </br></br>
+        </form>
+       
+        </div>
     </div>
       
 
 
-  <footer id="footer">
+    <footer id="footer">
     <h4 >Perfumaria</h4>
     <h3 class="text-blue ">SINTA A FRAGRANCIA</h1>
     <nav class="navbar navbar-expand-md navbar-light py-2 px-2">
@@ -93,13 +85,13 @@
       <div class=" navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto ">
             <li class="nav-item active">
-                <a class="nav-link text-blue" href="#">PERFUMES </a>
+                <a class="nav-link text-blue"  href="{{route('listarPerfume')}}">PERFUMES </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link text-blue" href="#">FRAGRANCIAS </a>
+                <a class="nav-link text-blue" href="{{route('listarFragrancia')}}">FRAGRANCIAS </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link text-blue" href="#">MATERIAS PRIMAS </a>
+                <a class="nav-link text-blue" href="{{route('listarMateriaPrima')}}">MATERIAS PRIMAS </a>
             </li>
           </ul>
         </div>

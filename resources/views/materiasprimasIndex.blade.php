@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOVO PERFUME</title>
+    <title>MATERIAS-PRIMAS</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work+Sans">
@@ -40,61 +40,37 @@
   
   <div id="principal">   
     <div class="container text-red">
-        @if(session()->has('mensagem'))
-            <div class="alert alert-success">
-                {{ session()->get('mensagem') }}
-            </div>
-        @endif
-        </br></br><h1>Novo Perfume</h1>
 
-         <form action="{{ route('salvarPerfume') }}" method="post" >
-           @csrf
 
-            <div class="row">
-              <div class="col">
-                <label for="nome">Nome:</label>
-                <input type="text" name="nome" id="nome" class="form-control formPlaceholder" placeholder="Digite o Nome do Perfume">
-              </div>
-              
-            </div>
-            
-            
-            <div class="row">
-                <div class="col">
-                    <label for="percentAgua">Percentual de Água:</label>
-                    <input type="text" name="percentAgua" id ="percentAgua" class = "form-control formPlaceholder" placeholder="0"> <div class="col">ml</div> 
-                </div>
-                <div class="col">
-                    <label for="percentAlcool">Percentual de Alcool:</label>
-                    <input type="text" name="percentAlcool" id="percentAlcool" class="form-control formPlaceholder" placeholder="0"> <div class="col">ml</div> 
-                </div>
-                <div class="col">
-                    <label for="inputFragrancia">Fragrancia:</label>
-                    <select id="inputFragrancia" class="form-control">
-                      <option selected>Escolha...</option>
-                      <option>...</option>
-    
-                    </select>
-                  </div>
-                    <input type="text" name="percentFragrancia" id="percentFragrancia" class="form-control formPlaceholder" placeholder="0"> <div class="col">ml</div> 
-                  
-            </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Estoques:</th>
+                    <th>Água</th>
+                    <th>Alcool</th>
+                </tr>
+            </thead>
 
-            <div class="row">
-                <div class="col">
-                     <button  type="submit" class="btn btn-info">Salvar </button> 
-                 </div>
-             </div>  
-  
-        </form>
-    </br></br>
+            <tbody>
+                @foreach ($materiasprimas as $materiaprima)
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td>{{ $materiaprima->estoqueAgua }}</td>
+                        <td>{{ $materiaprima->estoqueAlcool }}</td>
+                        <td>       <a href="{{ route('editarMateriaPrima') }}" class="btn btn-info">Altualizar Materias-Primas</a></td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     
     </div>
     </div>
       
 
 
-    <footer id="footer">
+ <footer id="footer">
     <h4 >Perfumaria</h4>
     <h3 class="text-blue ">SINTA A FRAGRANCIA</h1>
     <nav class="navbar navbar-expand-md navbar-light py-2 px-2">
