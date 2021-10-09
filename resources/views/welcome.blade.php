@@ -31,8 +31,11 @@
                     <a class="nav-link text-blue" href="{{route('listarFragrancia')}}">FRAGRANCIAS </a>
                     </li>
                     <li class="nav-item active">
-                    <a class="nav-link text-blue" href="{{route('listarMateriaPrima')}}">MATERIAS PRIMAS </a>
+                    <a class="nav-link text-blue" href="{{route('maisProduzido')}}">MAIS PRODUZIDO </a>
                     </li> 
+                    <li class="nav-item active">
+                    <a class="nav-link text-blue" href="{{route('maisUtilizada')}}">MAIS UTILIZADA </a>
+                    </li>  
                 </ul>
                 </div>
             </div>
@@ -72,7 +75,7 @@
                 <a class="nav-link text-blue" href="{{route('listarFragrancia')}}">FRAGRANCIAS </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link text-blue" href="{{route('listarMateriaPrima')}}">MATERIAS PRIMAS </a>
+            <a class="nav-link text-blue" href="{{route('maisProduzido')}}">MAIS PRODUZIDO </a>
             </li>
           </ul>
         </div>

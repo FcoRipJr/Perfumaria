@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MATERIAS-PRIMAS</title>
+    <title>FRAGRANCIA MAIS UTILIZADA</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work+Sans">
@@ -30,7 +30,10 @@
                     <a class="nav-link text-blue" href="{{route('listarFragrancia')}}">FRAGRANCIAS </a>
                     </li>
                     <li class="nav-item active">
-                    <a class="nav-link text-blue" href="{{route('listarMateriaPrima')}}">MATERIAS PRIMAS </a>
+                    <a class="nav-link text-blue" href="{{route('maisProduzido')}}">MAIS PRODUZIDO </a>
+                    </li> 
+                    <li class="nav-item active">
+                    <a class="nav-link text-blue" href="{{route('maisUtilizada')}}">MAIS UTILIZADA </a>
                     </li> 
                 </ul>
                 </div>
@@ -45,21 +48,29 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Estoques:</th>
-                    <th>Água</th>
-                    <th>Alcool</th>
+                    <th>Ações</th>
+                    <th>id</th>
+                    <th>Nome</th>
+                    <th>Estoque</th>
+                    <th>Total Utilizado</th>
                 </tr>
             </thead>
 
             <tbody>
-                @foreach ($materiasprimas as $materiaprima)
+                @foreach ($fragrancias as $fragrancia)
                     <tr>
                         <td>
-
+                            <a href="/fragrancias/edit/{{ $fragrancia->id }}" class="btn btn-primary btn-sm">Editar</a>
+                            <form action="/fragrancias/{{ $fragrancia->id }}" class="d-inline-block" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-sm btn-danger">Excluir</button>
+                            </form>
                         </td>
-                        <td>{{ $materiaprima->estoqueAgua }}</td>
-                        <td>{{ $materiaprima->estoqueAlcool }}</td>
-                        <td>       <a href="{{ route('editarMateriaPrima') }}" class="btn btn-info">Altualizar Materias-Primas</a></td>
+                        <td>{{ $fragrancia->id }}</td>
+                        <td>{{ $fragrancia->nome }}</td>
+                        <td>{{ $fragrancia->estoque }}</td>
+                        <td>{{ $fragrancia->totalUtilizado }}</td>
                     </tr>
                 @endforeach
             </tbody>
@@ -85,7 +96,7 @@
                 <a class="nav-link text-blue" href="{{route('listarFragrancia')}}">FRAGRANCIAS </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link text-blue" href="{{route('listarMateriaPrima')}}">MATERIAS PRIMAS </a>
+            <a class="nav-link text-blue" href="{{route('maisProduzido')}}">MAIS PRODUZIDO </a>
             </li>
           </ul>
         </div>

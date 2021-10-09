@@ -19,7 +19,11 @@ class FragranciaController extends Controller
 
     public function show()
     {
+        $fragrancias = Fragrancia::all();
 
+        return view('fragranciaShow', [
+            'fragrancias' => $fragrancias
+        ]);
     }
 
     public function create()

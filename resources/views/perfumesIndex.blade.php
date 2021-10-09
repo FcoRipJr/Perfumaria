@@ -30,7 +30,10 @@
                     <a class="nav-link text-blue" href="{{route('listarFragrancia')}}">FRAGRANCIAS </a>
                     </li>
                     <li class="nav-item active">
-                    <a class="nav-link text-blue" href="{{route('listarMateriaPrima')}}">MATERIAS PRIMAS </a>
+                    <a class="nav-link text-blue" href="{{route('maisProduzido')}}">MAIS PRODUZIDO </a>
+                    </li> 
+                    <li class="nav-item active">
+                    <a class="nav-link text-blue" href="{{route('maisUtilizada')}}">MAIS UTILIZADA </a>
                     </li> 
                 </ul>
                 </div>
@@ -40,44 +43,51 @@
   
   <div id="principal">   
     <div class="container text-red">
-        @if(session()->has('mensagem'))
+   <!--      @if(session()->has('mensagem'))
             <div class="alert alert-success">
                 {{ session()->get('mensagem') }}
             </div>
-        @endif
+        @endif -->
 
-        <a href="/perfumes/createPerfume" class="btn btn-info">Novo Perfume</a>
+        <a href="{{ route('novoPerfume' )}}" class="btn btn-info">Novo Perfume</a>
+        <!-- <a href="{{ route('maisProduzido' )}}" class="btn btn-info">Mais Produzido</a> -->
+
+
 
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Ações</th>
                     <th>id</th>
                     <th>Nome</th>
                     <th>% Água</th>
                     <th>% Alcool</th>
-                    <th>% Fragancia</th>
+                    <th>% Fragrancia</th>
+                    <th>Fragrancia</th>
                     <th>Total Produzido</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
 
             <tbody>
                 @foreach ($perfumes as $perfume)
                     <tr>
-                        <td>
-                            <a href="/perfumes/edit/{{ $perfume->id }}" class="btn btn-primary btn-sm">Editar</a>
-                            <form action="/perfumes/{{ $perfume->id }}" class="d-inline-block" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-sm btn-danger">Excluir</button>
-                            </form>
-                        </td>
                         <td>{{ $perfume->id }}</td>
                         <td>{{ $perfume->nome }}</td>
                         <td>{{ $perfume->percentAgua }}</td>
                         <td>{{ $perfume->percentAlcool }}</td>
                         <td>{{ $perfume->percentFragrancia }}</td>
                         <td>{{ $perfume->totalProduzido }}</td>
+                        <td>{{$perfume->fragrancias}}</td>
+                        <td>
+                             
+                           <form action="{{route('editarPerfume',['id'=>$perfume->id]) }}" method='put'>
+                               
+                                 <button type="submit"  class="btn btn-primary btn-sm" >Editar</button>
+                            </form>
+                            <form action="{{route('excluirPerfume',['id'=>$perfume->id]) }}" method='delete'>
+                                <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
@@ -103,7 +113,7 @@
                 <a class="nav-link text-blue" href="{{route('listarFragrancia')}}">FRAGRANCIAS </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link text-blue" href="{{route('listarMateriaPrima')}}">MATERIAS PRIMAS </a>
+            <a class="nav-link text-blue" href="{{route('maisProduzido')}}">MAIS PRODUZIDO </a>
             </li>
           </ul>
         </div>

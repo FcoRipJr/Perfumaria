@@ -3,8 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Query;
 
-class CreateMateriasprimasTable extends Migration
+class Estoque extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +14,11 @@ class CreateMateriasprimasTable extends Migration
      */
     public function up()
     {
-        Schema::create('materiasprimas', function (Blueprint $table) {
+        Schema::create('estoque', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->double('estoqueAgua');
-            $table->double('estoqueAlcool');
+            $table->double('estoqueAgua')->default(10000);
+            $table->double('estoqueAlcool')->default(8000);
         });
     }
 
@@ -28,6 +29,6 @@ class CreateMateriasprimasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('materiasprimas');
+        //
     }
 }

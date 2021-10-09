@@ -18,7 +18,7 @@ class CreateFragranciasTable extends Migration
             $table->timestamps();
             $table->string('nome');
             $table->double('estoque');
-            $table->double('totalUtilizado');
+            $table->double('totalUtilizado')->nullable();
         });
     }
 

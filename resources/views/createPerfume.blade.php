@@ -30,7 +30,10 @@
                     <a class="nav-link text-blue" href="{{route('listarFragrancia')}}">FRAGRANCIAS </a>
                     </li>
                     <li class="nav-item active">
-                    <a class="nav-link text-blue" href="{{route('listarMateriaPrima')}}">MATERIAS PRIMAS </a>
+                    <a class="nav-link text-blue" href="{{route('maisProduzido')}}">MAIS PRODUZIDO </a>
+                    </li> 
+                    <li class="nav-item active">
+                    <a class="nav-link text-blue" href="{{route('maisUtilizada')}}">MAIS UTILIZADA </a>
                     </li> 
                 </ul>
                 </div>
@@ -69,12 +72,16 @@
                     <input type="text" name="percentAlcool" id="percentAlcool" class="form-control formPlaceholder" placeholder="0"> <div class="col">ml</div> 
                 </div>
                 <div class="col">
-                    <label for="inputFragrancia">Fragrancia:</label>
-                    <select id="inputFragrancia" class="form-control">
-                      <option selected>Escolha...</option>
-                      <option>...</option>
-    
+                    <label for="fragrancias">Fragrancia:</label>
+                    <select name="fragrancias" class="form-control select2-multiple">
+                        <option value=""></option>
+                        @foreach($fragrancias as $fragrancia)
+                            <option value="{{$fragrancia->id}}">
+                                {{$fragrancia->nome}} <br>{{$fragrancia->Mobile}}
+                            </option>
+                        @endforeach
                     </select>
+
                   </div>
                     <input type="text" name="percentFragrancia" id="percentFragrancia" class="form-control formPlaceholder" placeholder="0"> <div class="col">ml</div> 
                   
@@ -109,7 +116,7 @@
                 <a class="nav-link text-blue" href="{{route('listarFragrancia')}}">FRAGRANCIAS </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link text-blue" href="{{route('listarMateriaPrima')}}">MATERIAS PRIMAS </a>
+            <a class="nav-link text-blue" href="{{route('maisProduzido')}}">MAIS PRODUZIDO </a>
             </li>
           </ul>
         </div>

@@ -30,7 +30,10 @@
                     <a class="nav-link text-blue" href="{{route('listarFragrancia')}}">FRAGRANCIAS </a>
                     </li>
                     <li class="nav-item active">
-                    <a class="nav-link text-blue" href="{{route('listarMateriaPrima')}}">MATERIAS PRIMAS </a>
+                    <a class="nav-link text-blue" href="{{route('maisProduzido')}}">MAIS PRODUZIDO </a>
+                    </li> 
+                    <li class="nav-item active">
+                    <a class="nav-link text-blue" href="{{route('maisUtilizada')}}">MAIS UTILIZADA </a>
                     </li> 
                 </ul>
                 </div>
@@ -48,7 +51,7 @@
         @endif
 
          </br></br><h1>Editar Perfume</h1>
-          <form action="/perfumes/{{$perfume->id}}" method="post"enctype="multipart/form-data">
+          <form action="{{route('atualizarPerfume',['id'=>$perfume->id]) }}" method="post"enctype="multipart/form-data">
            @csrf
            @method('PUT')
 
@@ -57,7 +60,10 @@
                 <label for="nome">Nome:</label>
                 <input type="text" name="nome" id="nome" class="form-control formPlaceholder" placeholder="Digite o Nome do Perfume" value="{{ $perfume->nome }}">
               </div>
-              
+              <div class="col">
+                <label for="totalProduzido">Total Produzido:</label>
+                <input type="text" name="totalProduzido" id="totalProduzido" class="form-control formPlaceholder" placeholder="0" value="{{ $perfume->totalProduzido }}">
+              </div>
             </div>
             
             
@@ -73,8 +79,12 @@
                 <div class="col">
                     <label for="inputFragrancia">Fragrancia:</label>
                     <select id="inputFragrancia" class="form-control">
-                      <option selected>Escolha...</option>
-                      <option>...</option>
+                      <option value=""></option>
+                        @foreach($fragrancias as $fragrancia)
+                            <option value="{{$fragrancia->id}}">
+                                {{$fragrancia->nome}} <br>{{$fragrancia->Mobile}}
+                            </option>
+                        @endforeach
     
                     </select>
                     <input type="text" name="percentFragrancia" id="percentFragrancia" class="form-control formPlaceholder" placeholder="0" value="{{ $perfume->percentFragancia }}"> <div class="col">ml</div> 
@@ -111,7 +121,7 @@
                 <a class="nav-link text-blue" href="{{route('listarFragrancia')}}">FRAGRANCIAS </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link text-blue" href="{{route('listarMateriaPrima')}}">MATERIAS PRIMAS </a>
+            <a class="nav-link text-blue" href="{{route('maisProduzido')}}">MAIS PRODUZIDO </a>
             </li>
           </ul>
         </div>

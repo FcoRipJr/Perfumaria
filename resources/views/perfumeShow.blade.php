@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATUALIZAR ESTOQUE</title>
+    <title>PERFUMEE MAIS PRODUZIDO</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work+Sans">
     <link href="http://fonts.cdnfonts.com/css/classic-blody-line" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 
 </head>
 
@@ -30,8 +30,11 @@
                     <a class="nav-link text-blue" href="{{route('listarFragrancia')}}">FRAGRANCIAS </a>
                     </li>
                     <li class="nav-item active">
-                    <a class="nav-link text-blue" href="{{route('listarMateriaPrima')}}">MATERIAS PRIMAS </a>
+                    <a class="nav-link text-blue" href="{{route('maisProduzido')}}">MAIS PRODUZIDO </a>
                     </li> 
+                    <li class="nav-item active">
+                    <a class="nav-link text-blue" href="{{route('maisUtilizada')}}">MAIS UTILIZADA </a>
+                    </li>  
                 </ul>
                 </div>
             </div>
@@ -40,44 +43,44 @@
   
   <div id="principal">   
     <div class="container text-red">
-
-         @if(session()->has('mensagem'))
+   <!--      @if(session()->has('mensagem'))
             <div class="alert alert-success">
                 {{ session()->get('mensagem') }}
             </div>
-        @endif
+        @endif -->
 
-         </br></br><h1>Atualizar Estoque</h1>
-          <form action="/materiasprimas/{{$materiaprima->all()}}" method="post"enctype="multipart/form-data">
-           @csrf
-           @method('PUT')
+    
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Nome</th>
+                    <th>% Água</th>
+                    <th>% Alcool</th>
+                    <th>% Fragrancia</th>
+                    <th>Fragrancia</th>
+                    <th>Total Produzido</th>
+                  
+                </tr>
+            </thead>
 
-           <div class="row">
-              <div class="col">
-                <label for="estoqueAgua">Água:</label>
-                <input type="text" name="estoqueAgua" id="estoqueAgua" class="form-control formPlaceholder"  value="{{ $materiaprima->estoqueAgua }}">
-              </div>
-              
-            </div>
-            
-            
-            <div class="row">
-                <div class="col">
-                    <label for="estoqueAlcool">Alcool:</label>
-                    <input type="text" name="estoqueAlcool" id ="estoqueAlcool" class = "form-control formPlaceholder" placeholder="0" value="{{ $materiprima->estoqueAlcool }}" > <div class="col">ml</div> 
-                </div>
-
-            </div>
-
-            <div class="row">
-                <div class="col">
-                     <button  type="submit" class="btn btn-info">Salvar </button> 
-                 </div>
-             </div>  
-        </form>
-        <a href="{{route('listarMateriaPrima')}}" class="btn btn-light mt-5">Voltar</a>
-
-    </br></br>
+            <tbody>
+             
+            @foreach ($perfumes as $perfume)
+                    <tr>
+                        <td>{{ $perfume->id }}</td>
+                        <td>{{ $perfume->nome }}</td>
+                        <td>{{ $perfume->percentAgua }}</td>
+                        <td>{{ $perfume->percentAlcool }}</td>
+                        <td>{{ $perfume->percentFragrancia }}</td>
+                        <td>{{ $perfume->totalProduzido }}</td>
+                        <td>{{$perfume->fragrancias}}</td>
+                       
+                    </tr>
+                @endforeach
+          
+            </tbody>
+        </table>
     
     </div>
     </div>
@@ -99,7 +102,7 @@
                 <a class="nav-link text-blue" href="{{route('listarFragrancia')}}">FRAGRANCIAS </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link text-blue" href="{{route('listarMateriaPrima')}}">MATERIAS PRIMAS </a>
+            <a class="nav-link text-blue" href="{{route('maisProduzido')}}">MAIS PRODUZIDO </a>
             </li>
           </ul>
         </div>
@@ -125,7 +128,12 @@
   </footer>
 
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.pt-BR.min.js" integrity="sha512-mVkLPLQVfOWLRlC2ZJuyX5+0XrTlbW2cyAwyqgPkLGxhoaHNSWesYMlcUjX8X+k45YB8q90s88O7sos86636NQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOVO PERFUME</title>
+    <title>MATERIAS-PRIMAS</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work+Sans">
@@ -34,7 +34,7 @@
                     </li> 
                     <li class="nav-item active">
                     <a class="nav-link text-blue" href="{{route('maisUtilizada')}}">MAIS UTILIZADA </a>
-                    </li>  
+                    </li> 
                 </ul>
                 </div>
             </div>
@@ -45,12 +45,34 @@
     <div class="container text-red">
 
 
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Estoques:</th>
+                    <th>Água</th>
+                    <th>Alcool</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach ($estoque as $estoque)
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td>{{ $estoque->estoqueAgua }}</td>
+                        <td>{{ $estoque->estoqueAlcool }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    
     </div>
     </div>
       
 
 
-  <footer id="footer">
+ <footer id="footer">
     <h4 >Perfumaria</h4>
     <h3 class="text-blue ">SINTA A FRAGRANCIA</h1>
     <nav class="navbar navbar-expand-md navbar-light py-2 px-2">
